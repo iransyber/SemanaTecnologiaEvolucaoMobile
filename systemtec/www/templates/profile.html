@@ -1,0 +1,43 @@
+<ion-view view-title="Perfil">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero slide-up" style="background-image: url('img/bg-profile.jpg');">
+            <div class="content">
+                <div class="avatar" style="background-image: url('img/icon-smtec.png');"></div>
+                <h3><a class="">Professor</a></h3>
+                <h4>Wanialdo</h4>
+            </div>
+        </div>
+        <div class="tabs bg-laranja tabs-icon-top static">
+            <a ui-sref="app.activity" class="tab-item">
+                <i class="icon ion-arrow-graph-up-right"></i> Avaliações
+            </a>
+            <a ui-sref="app.friends" class="tab-item">
+                <i class="icon ion-android-people"></i> Equipes
+            </a>
+            <a ui-sref="app.gallery" class="tab-item">
+                <i class="icon ion-images"></i> Galeria
+            </a>
+        </div>
+        <h4 class="content padding double-padding-x">Equipes</h4>
+        <div class="list animate-fade-slide-in-right">
+            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
+                <img src="img/logo_sys.png">
+                <h2>do Javascript ao Ionic</h2>
+                <p>desenvolvimento rest full</p>
+                <i class="icon ion-chatbubble muted"></i>
+            </a>
+            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
+                <img src="img/icon-smtec.png">
+                <h2>Bechmarking e sistemas operacionais</h2>
+                <p>Sistemas operacionais moveis</p>
+                <i class="icon ion-chatbubble muted"></i>
+            </a>
+            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
+                <img src="img/icon-smtec.png">
+                <h2>Openstack Infraestruura</h2>
+                <p>Openstack infraestrutura</p>
+                <i class="icon ion-chatbubble muted"></i>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

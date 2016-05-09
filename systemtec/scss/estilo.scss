@@ -1,0 +1,11 @@
+@import "www/lib/ionic/scss/variaveis.scss";
+@import "www/lib/ionic/scss/mixins_estilo.scss";
+
+
+.ionic_ratings .icon {
+  font-size:25px;
+}
+
+.ionic_ratings .read_only {
+  pointer-events:none;
+}
