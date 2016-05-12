@@ -98,3 +98,7 @@ p {
     position: fixed;
     bottom: 0;
 }
+
+.login-white {
+  color: white;
+}
