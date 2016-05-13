@@ -19,7 +19,7 @@
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
-                <ion-item nav-clear menu-close ui-sref="app.login">
+                <ion-item nav-clear menu-close ui-sref="app.home">
                     Home
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="app.activity">
@@ -38,3 +38,20 @@
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>
+
+<ion-header-bar name="menuTopo" id="menuTopo" class="bar bar-header">
+    <div class="tabs barra-home">
+      <a class="tab-item login-white" ui-sref="app.home">
+        <i class="icon ion-home"></i>
+        Test
+      </a>
+      <a class="tab-item login-white" href="#">
+        <i class="icon ion-star"></i>
+        Favorites
+      </a>
+      <a class="tab-item login-white" ui-sref="app.login">
+        <i class="icon ion-person"></i>
+        login
+      </a>
+    </div>
+</ion-header-bar>

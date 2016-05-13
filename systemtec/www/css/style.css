@@ -101,4 +101,9 @@ p {
 
 .login-white {
   color: white;
+  opacity: 1.0;
+}
+
+.barra-home {
+  background:#3198c8;
 }

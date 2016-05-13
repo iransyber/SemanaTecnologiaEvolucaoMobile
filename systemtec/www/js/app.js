@@ -37,6 +37,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         controller: 'AppCtrl'
     })
 
+
+
     .state('app.activity', {
         url: '/activity',
         views: {
