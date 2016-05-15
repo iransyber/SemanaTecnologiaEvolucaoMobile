@@ -107,3 +107,16 @@ p {
 .barra-home {
   background:#3198c8;
 }
+
+.aval-sociais i {
+  font-size: 1.6em;
+  margin-right: 10px;
+}
+
+.aval-sociais i {
+  color:#3198c8;
+}
+
+.aval-sociais i:nth-child(2) {
+  color:#3B5998;
+}
