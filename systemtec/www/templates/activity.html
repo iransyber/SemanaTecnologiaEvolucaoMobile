@@ -50,15 +50,69 @@
                 </div>
             </div>
         </div>
+        <div class="item card-item">
+            <div  class="card stable-bg ink ink-dark">
+                <div class="item item-avatar item-text-wrap">
+                    <span class="avatar" style="background-image: url('img/logo_sys.png');"></span>
+                    <h2>Systemtec</h2>
+                    <div class="card">
+                      <h3>tecnologias novas</h3>
+                        <div class="item item-text-wrap">
+                          <p>
+                            testo javascript ionic
+                          </p>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <h3>Descrição</h3>
+                      <div class="item item-text-wrap">
+                        <p>
+                          trabalho apresentando novas tecnologias novas
+                        </p>
+                    </div>
+                   </div>
+                  <div class="card">
+                    <h3>Data da Apresentação</h3>
+                    <div class="item item-text-wrap">
+                      <p>
+                      <i class="icon ion-android-calendar"></i> <span> 3829328=-</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="list pull-right btn-nota">
+                      <button id="" class="button button-small button-positive"  ng-click="openModal()">
+                          <i class="icon ion-ios-list"></i> Avaliar Nota
+                      </button>
+                    </div>
+                  </div>
+                    <div class="list">
+
+                    </div>
+                    <div class="card-footer aval-sociais">
+                      <div class="pull-right text-center">
+                        <i class="icon icon ion-images" ui-sref="app.gallery"></i>
+                        <i class="icon ion-social-facebook text-center"></i>
+                      </div>
+                        <div class="pull-left">
+                            <i class="icon ion-clock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script id="test-modal.html" type="text/ng-template">
           <ion-modal-view>
-            <ion-header-bar class="bar bar-header bar-stable">
+            <ion-header-bar class="bar bar-header bar-positive">
               <h1 class="title">Avaliação</h1>
+              <button class="button button-clear button-primary" ng-click="modal.hide()">
+                <i class="ion-close-round"></i>
+              </button>
             </ion-header-bar>
           <ion-content class="padding">
           <div class="list">
             <label class="item item-input">
-              <input type="text" placeholder="NOTA" ng-maxlength="2">
+              <input type="text" placeholder="NOTA" ng-maxlength="2" class="input-modal" ng-required="true"
+               ng-pattern="/^\d{2}$/"/>
             </label>
             <button class="button button-full button-positive" ng-click="createContact(newUser)">Enviar</button>
           </div>
