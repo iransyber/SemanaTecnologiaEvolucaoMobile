@@ -1,26 +1,30 @@
 <ion-view view-title="Equipes">
     <ion-content ng-class="{expanded:isExpanded}">
-        <div class="content has-header">
-          <div class="list animate-fade-slide-in-right">
-              <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                  <img src="img/logo_sys.png">
-                  <h2>do Javascript ao Ionic</h2>
-                  <p>desenvolvimento rest full</p>
-                  <i class="icon ion-chatbubble muted"></i>
-              </a>
-              <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                  <img src="img/icon-smtec.png">
-                  <h2>Bechmarking e sistemas operacionais</h2>
-                  <p>Sistemas operacionais moveis</p>
-                  <i class="icon ion-chatbubble muted"></i>
-              </a>
-              <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                  <img src="img/icon-smtec.png">
-                  <h2>Openstack Infraestruura</h2>
-                  <p>Openstack infraestrutura</p>
-                  <i class="icon ion-chatbubble muted"></i>
-              </a>
-          </div>
+      <div class="list animate-fade-slide-in-right" ng-init="listarTrabalhos()" >
+        <div class="" ng-repeat="trb in trabalhos | filter: pesquisa track by trb.contador">
+          <a  ui-sref="app.activity" class="item item-avatar item-icon-right">
+              <img src="img/logo_sys.png">
+              <h2>{{trb.Tema}}</h2>
+              <p>{{infotrabalho.Tema}}</p>
+              <i class="icon ion-chatbubble muted"></i>
+          </a>
         </div>
+      </div>
+      <div class="">
+        <a ui-sref="app.activity" class="item item-avatar item-icon-right">
+            <img src="img/icon-smtec.png">
+            <h2>Bechmarking e sistemas operacionais</h2>
+            <p>Sistemas operacionais moveis</p>
+            <i class="icon ion-chatbubble muted"></i>
+        </a>
+      </div>
+      <div class="">
+        <a ui-sref="app.activity" class="item item-avatar item-icon-right">
+            <img src="img/icon-smtec.png">
+            <h2>Openstack Infraestruura</h2>
+            <p>Openstack infraestrutura</p>
+            <i class="icon ion-chatbubble muted"></i>
+        </a>
+      </div>
     </ion-content>
 </ion-view>

@@ -104,7 +104,7 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('homeCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+.controller('homeCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http) {
   // Set Header
   $scope.$parent.showMenuTopo();
   $scope.$parent.hideHeader();
@@ -127,6 +127,62 @@ angular.module('starter.controllers', [])
   }, 700);
 
   // Set Ink
+
+    var trabalho = {
+     contador:0,
+     Id: "",
+     Tema: "",
+     Descricao: "",
+     DataApresentacao: "",
+     Ativo:false
+  }
+  $scope.trabalhos = [];
+  $scope.infotrabalho = {
+     contador: 0,
+     Id: "",
+     Tema: "",
+     Descricao: "",
+     DataApresentacao: "",
+     Ativo: false
+  }
+
+  $scope.listarTrabalhos = function() {
+     $http({
+         url: 'Api/trabalhos/Listar',
+         method: 'GET'
+     }).success(function (data) {
+         $scope.trabalhos.length = 0;
+         angular.forEach(data, function (value, key) {
+             trabalho.contador = key;
+             trabalho.Id = data[key].Id;
+             trabalho.Tema = data[key].Tema;
+             trabalho.Descricao = data[key].Descricao;
+             trabalho.DataApresentacao = data[key].DataApresentacao;
+             trabalho.Ativo = data[key].Ativo;
+
+             $scope.trabalhos.push(angular.copy(trabalho));
+         });
+         return $scope.trabalhos;
+     });
+  }
+
+  $scope.visualizar = function(codigo) {
+     $http({
+         url: 'Api/trabalhos/info/' + codigo,
+         method: 'GET'
+     }).success(function (data) {
+         angular.forEach(data, function (value, key) {
+             $scope.infotrabalho.contador = key;
+             $scope.infotrabalho.Id = data[key].Id;
+             $scope.infotrabalho.Tema = data[key].Tema;
+             $scope.infotrabalho.Descricao = data[key].Descricao;
+             $scope.infotrabalho.DataApresentacao = data[key].DataApresentacao;
+             $scope.infotrabalho.Ativo = data[key].Ativo;
+         });
+         return $scope.infotrabalho;
+     });
+  }
+
 })
 
 
@@ -159,7 +215,7 @@ angular.module('starter.controllers', [])
     ionicMaterialInk.displayEffect();
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+.controller('ProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http) {
     // Set Header
     $scope.hideMenuTopo();
     $scope.$parent.showHeader();
@@ -183,9 +239,65 @@ angular.module('starter.controllers', [])
 
     // Set Ink
     ionicMaterialInk.displayEffect();
+
+
+        var trabalho = {
+         contador:0,
+         Id: "",
+         Tema: "",
+         Descricao: "",
+         DataApresentacao: "",
+         Ativo:false
+     }
+     $scope.trabalhos = [];
+     $scope.infotrabalho = {
+         contador: 0,
+         Id: "",
+         Tema: "",
+         Descricao: "",
+         DataApresentacao: "",
+         Ativo: false
+     }
+
+     $scope.listarTrabalhos = function() {
+         $http({
+             url: 'Api/trabalhos/Listar',
+             method: 'GET'
+         }).success(function (data) {
+             $scope.trabalhos.length = 0;
+             angular.forEach(data, function (value, key) {
+                 trabalho.contador = key;
+                 trabalho.Id = data[key].Id;
+                 trabalho.Tema = data[key].Tema;
+                 trabalho.Descricao = data[key].Descricao;
+                 trabalho.DataApresentacao = data[key].DataApresentacao;
+                 trabalho.Ativo = data[key].Ativo;
+
+                 $scope.trabalhos.push(angular.copy(trabalho));
+             });
+             return $scope.trabalhos;
+         });
+     }
+
+     $scope.visualizar = function(codigo) {
+         $http({
+             url: 'Api/trabalhos/info/' + codigo,
+             method: 'GET'
+         }).success(function (data) {
+             angular.forEach(data, function (value, key) {
+                 $scope.infotrabalho.contador = key;
+                 $scope.infotrabalho.Id = data[key].Id;
+                 $scope.infotrabalho.Tema = data[key].Tema;
+                 $scope.infotrabalho.Descricao = data[key].Descricao;
+                 $scope.infotrabalho.DataApresentacao = data[key].DataApresentacao;
+                 $scope.infotrabalho.Ativo = data[key].Ativo;
+             });
+             return $scope.infotrabalho;
+         });
+     }
 })
 
-.controller('ActivityCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+.controller('ActivityCtrl', function($scope, $stateParams, $ionicModal, $timeout, ionicMaterialMotion, ionicMaterialInk, $http) {
     $scope.hideMenuTopo();
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
@@ -201,6 +313,87 @@ angular.module('starter.controllers', [])
 
     // Activate ink for controller
     ionicMaterialInk.displayEffect();
+
+    $ionicModal.fromTemplateUrl('test-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+
+    var trabalho = {
+     contador:0,
+     Id: "",
+     Tema: "",
+     Descricao: "",
+     DataApresentacao: "",
+     Ativo:false
+ }
+ $scope.trabalhos = [];
+ $scope.infotrabalho = {
+     contador: 0,
+     Id: "",
+     Tema: "",
+     Descricao: "",
+     DataApresentacao: "",
+     Ativo: false
+ }
+
+ $scope.listarTrabalhos = function() {
+     $http({
+         url: 'Api/trabalhos/Listar',
+         method: 'GET'
+     }).success(function (data) {
+         $scope.trabalhos.length = 0;
+         angular.forEach(data, function (value, key) {
+             trabalho.contador = key;
+             trabalho.Id = data[key].Id;
+             trabalho.Tema = data[key].Tema;
+             trabalho.Descricao = data[key].Descricao;
+             trabalho.DataApresentacao = data[key].DataApresentacao;
+             trabalho.Ativo = data[key].Ativo;
+
+             $scope.trabalhos.push(angular.copy(trabalho));
+         });
+         return $scope.trabalhos;
+     });
+ }
+
+ $scope.visualizar = function(codigo) {
+     $http({
+         url: 'Api/trabalhos/info/' + codigo,
+         method: 'GET'
+     }).success(function (data) {
+         angular.forEach(data, function (value, key) {
+             $scope.infotrabalho.contador = key;
+             $scope.infotrabalho.Id = data[key].Id;
+             $scope.infotrabalho.Tema = data[key].Tema;
+             $scope.infotrabalho.Descricao = data[key].Descricao;
+             $scope.infotrabalho.DataApresentacao = data[key].DataApresentacao;
+             $scope.infotrabalho.Ativo = data[key].Ativo;
+         });
+         return $scope.infotrabalho;
+     });
+ }
+
 })
 
 .controller('GalleryCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
@@ -221,63 +414,6 @@ angular.module('starter.controllers', [])
         selector: '.animate-fade-slide-in .item'
     });
 
-
-//////CONTROLLERS LISTAR TRABALHOS//////////////////////
-
-var trabalho = {
-    contador:0,
-    Id: "",
-    Tema: "",
-    Descricao: "",
-    DataApresentacao: "",
-    Ativo:false
-}
-$scope.trabalhos = [];
-$scope.infotrabalho = {
-    contador: 0,
-    Id: "",
-    Tema: "",
-    Descricao: "",
-    DataApresentacao: "",
-    Ativo: false
-}
-
-$scope.listarTrabalhos = function() {
-    $http({
-        url: 'Api/trabalhos/Listar',
-        method: 'GET'
-    }).success(function (data) {
-        $scope.trabalhos.length = 0;
-        angular.forEach(data, function (value, key) {
-            trabalho.contador = key;
-            trabalho.Id = data[key].Id;
-            trabalho.Tema = data[key].Tema;
-            trabalho.Descricao = data[key].Descricao;
-            trabalho.DataApresentacao = data[key].DataApresentacao;
-            trabalho.Ativo = data[key].Ativo;
-
-            $scope.trabalhos.push(angular.copy(trabalho));
-        });
-        return $scope.trabalhos;
-    });
-}
-
-$scope.visualizar = function(codigo) {
-    $http({
-        url: 'Api/trabalhos/info/' + codigo,
-        method: 'GET'
-    }).success(function (data) {
-        angular.forEach(data, function (value, key) {
-            $scope.infotrabalho.contador = key;
-            $scope.infotrabalho.Id = data[key].Id;
-            $scope.infotrabalho.Tema = data[key].Tema;
-            $scope.infotrabalho.Descricao = data[key].Descricao;
-            $scope.infotrabalho.DataApresentacao = data[key].DataApresentacao;
-            $scope.infotrabalho.Ativo = data[key].Ativo;
-        });
-        return $scope.infotrabalho;
-    });
-}
 
 })
 

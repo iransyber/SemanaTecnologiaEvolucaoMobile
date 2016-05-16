@@ -1,15 +1,15 @@
 <ion-view view-title="Avaliações">
     <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
-        <div class="item card-item">
-            <div ui-sref="" class="card stable-bg ink ink-dark">
+        <div class="item card-item" ng-init="listarTrabalhos()">
+            <div  class="card stable-bg ink ink-dark" ng-repeat="trb in trabalhos | filter: pesquisa track by trb.contador">
                 <div class="item item-avatar item-text-wrap">
                     <span class="avatar" style="background-image: url('img/logo_sys.png');"></span>
                     <h2>Systemtec</h2>
                     <div class="card">
-                      <h3>Tema</h3>
+                      <h3>{{trb.Tema}}</h3>
                         <div class="item item-text-wrap">
                           <p>
-                            do javascript ao Ionic
+                            {{infotrabalho.Tema}}
                           </p>
                       </div>
                     </div>
@@ -17,8 +17,7 @@
                       <h3>Descrição</h3>
                       <div class="item item-text-wrap">
                         <p>
-                          Equipe demonstrou os  principais aspectos na condução do trabalho sobretudo, na pesquisa
-                          sobre tecnologias,aplicação e integração das tecnologias envolvidas no projeto
+                          {{infotrabalho.Descricao}}
                         </p>
                     </div>
                    </div>
@@ -26,30 +25,24 @@
                     <h3>Data da Apresentação</h3>
                     <div class="item item-text-wrap">
                       <p>
-                      <i class="icon ion-android-calendar"></i> <span> 16/05/2016</span>
+                      <i class="icon ion-android-calendar"></i> <span> {{trb.DataApresentacao  | date:'dd-MM-yyyy'}}</span>
                       </p>
                     </div>
                   </div>
-                  <div class="list">
-                    <div class="item item-input-inset">
-                      <label class="item-input-wrapper">
-                        <input type="text" placeholder="avaliar nota" >
-                      </label>
-                      <button id="" class="button button-small button-positive">
-                          <i class="icon ion-paper-airplane"></i>
+                  <div class="list pull-right btn-nota">
+                      <button id="" class="button button-small button-positive"  ng-click="openModal()">
+                          <i class="icon ion-ios-list"></i> Avaliar Nota
                       </button>
                     </div>
                   </div>
                     <div class="list">
 
-                      <div>
-                        <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-                      </div>
-
                     </div>
-                    <div class="card-footer text-right aval-sociais">
+                    <div class="card-footer aval-sociais">
+                      <div class="pull-right text-center">
                         <i class="icon icon ion-images" ui-sref="app.gallery"></i>
-                        <i class="icon ion-social-facebook"></i>
+                        <i class="icon ion-social-facebook text-center"></i>
+                      </div>
                         <div class="pull-left">
                             <i class="icon ion-clock"></i>
                         </div>
@@ -57,35 +50,20 @@
                 </div>
             </div>
         </div>
-        <div class="item card-item">
-            <div ui-sref="app.gallery" class="card stable-bg ink ink-dark">
-                <div class="item item-avatar item-text-wrap">
-                    <span class="avatar" style="background-image: url('img/icon-smtec.png');"></span>
-                    <h2>Bechmarking e sistemas operacionais</h2>
-                    <div class="card-footer text-right">
-                        <i class="icon ion-chatbubble positive"></i> 2
-                        <i class="icon ion-heart assertive"></i> 4
-                        <div class="pull-left">
-                            <i class="icon ion-clock"></i> 12 mins ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item card-item">
-            <div ui-sref="app.gallery" class="card stable-bg ink ink-dark">
-                <div class="item item-avatar item-text-wrap">
-                    <span class="avatar" style="background-image: url('img/icon-smtec.png');"></span>
-                    <h2>Openstack Infraestruura</h2>
-                    <div class="card-footer text-right">
-                        <i class="icon ion-chatbubble positive"></i> 2
-                        <i class="icon ion-heart assertive"></i> 4
-                        <div class="pull-left">
-                            <i class="icon ion-clock"></i> 3 hrs ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <script id="test-modal.html" type="text/ng-template">
+          <ion-modal-view>
+            <ion-header-bar class="bar bar-header bar-stable">
+              <h1 class="title">Avaliação</h1>
+            </ion-header-bar>
+          <ion-content class="padding">
+          <div class="list">
+            <label class="item item-input">
+              <input type="text" placeholder="NOTA" ng-maxlength="2">
+            </label>
+            <button class="button button-full button-positive" ng-click="createContact(newUser)">Enviar</button>
+          </div>
+            </ion-content>
+          </ion-modal-view>
+        </script>
     </ion-content>
 </ion-view>
