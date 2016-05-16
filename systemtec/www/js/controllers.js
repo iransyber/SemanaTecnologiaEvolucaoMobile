@@ -146,9 +146,11 @@ angular.module('starter.controllers', [])
      Ativo: false
   }
 
+  //ISRAEL ESTA E UMA ROTA FICTICIA MAS E DESTA FORMA QUE SE UTILIZA
+  var rotabase = "http://localhost:8080/"
   $scope.listarTrabalhos = function() {
      $http({
-         url: 'Api/trabalhos/Listar',
+         url: rotabase + 'Api/trabalhos/Listar',
          method: 'GET'
      }).success(function (data) {
          $scope.trabalhos.length = 0;
@@ -168,7 +170,7 @@ angular.module('starter.controllers', [])
 
   $scope.visualizar = function(codigo) {
      $http({
-         url: 'Api/trabalhos/info/' + codigo,
+         url: rotabase + 'Api/trabalhos/info/' + codigo,
          method: 'GET'
      }).success(function (data) {
          angular.forEach(data, function (value, key) {
@@ -258,10 +260,13 @@ angular.module('starter.controllers', [])
          DataApresentacao: "",
          Ativo: false
      }
+	
+     //ISRAEL ESTA VARIAVEL FICA O INICIO DO HTTP
+     var rotabase = "http://localhost:3366/"
 
      $scope.listarTrabalhos = function() {
          $http({
-             url: 'Api/trabalhos/Listar',
+             url: rotabase + 'Api/trabalhos/Listar',
              method: 'GET'
          }).success(function (data) {
              $scope.trabalhos.length = 0;
@@ -281,7 +286,7 @@ angular.module('starter.controllers', [])
 
      $scope.visualizar = function(codigo) {
          $http({
-             url: 'Api/trabalhos/info/' + codigo,
+             url: rotabase + 'Api/trabalhos/info/' + codigo,
              method: 'GET'
          }).success(function (data) {
              angular.forEach(data, function (value, key) {

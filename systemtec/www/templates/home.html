@@ -1,5 +1,5 @@
-<ion-view view-title="home">
-    <ion-content ng-class="{expanded:$scope.isExpanded}">
+<ion-view view-title="home" ng-app="starter">
+    <ion-content ng-class="{expanded:$scope.isExpanded}" ng-controller="homeCtrl">
         <div class="hero slide-up" style="background-image: url('img/bg-index.jpg');">
             <div class="content">
                 <div class="avatar" ></div>
@@ -14,22 +14,6 @@
                 <img src="img/logo_sys.png">
                 <h2>{{trb.Tema}}</h2>
                 <p>{{infotrabalho.Tema}}</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </a>
-          </div>
-          <div class="">
-            <a ui-sref="app.login" class="item item-avatar item-icon-right">
-                <img src="img/icon-smtec.png">
-                <h2>Bechmarking e sistemas operacionais</h2>
-                <p>Sistemas operacionais moveis</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </a>
-          </div>
-          <div class="">
-            <a ui-sref="app.login" class="item item-avatar item-icon-right">
-                <img src="img/icon-smtec.png">
-                <h2>Openstack Infraestruura</h2>
-                <p>Openstack infraestrutura</p>
                 <i class="icon ion-chatbubble muted"></i>
             </a>
           </div>
