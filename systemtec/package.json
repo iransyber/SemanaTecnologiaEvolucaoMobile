@@ -1,5 +1,5 @@
 {
-  "name": "Systemtec",
+  "name": "systemtec",
   "version": "1.0.0",
   "description": "Aplicativo hibrido para consulta e aplicação de notas na Semana de tecnologia",
   "dependencies": {
@@ -15,5 +15,9 @@
     "gulp-util": "^2.2.14",
     "node-sass": "^3.7.0",
     "shelljs": "^0.3.0"
-  }
+  },
+  "cordovaPlugins": [],
+  "cordovaPlatforms": [
+    "android"
+  ]
 }

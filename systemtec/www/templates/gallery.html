@@ -3,6 +3,9 @@
         <div class="list half">
             <div ui-sref="app.profile" class="card card-gallery item item-text-wrap">
                 <div class="ink dark-bg">
+                    <button class = "button" ng-click = "takePicture()"><i class="ion-camera"></i>Tirar Foto</button>
+                    <button class = "button" ng-click = "getPicture()">Vê galeria</button>
+                    <img ng-src = "{{user.picture}}">
                     <h2>Banners</h2>
                     <img class="full-image" src="img/sansa-snowcastle3.jpg">
                 </div>
@@ -38,7 +41,7 @@
             <div ui-sref="app.profile" class="card card-gallery item item-text-wrap">
                 <div class="ink dark-bg">
                     <h2>trabalhando tecnologia</h2>
-                    <img class="full-image" src="img/sansa-snowcastle2.jpg">
+                    <img  class="full-image" ng-src = "{{user.picture}}">
                 </div>
                 <div class="item tabs tabs-secondary tabs-icon-left">
                     <a class="tab-item stable-bg assertive">
@@ -54,7 +57,7 @@
             <div ui-sref="app.profile" class="card card-gallery item item-text-wrap">
                 <div class="ink dark-bg">
                     <h2>Participantes</h2>
-                    <img class="full-image" src="img/sansa-snowcastle4.jpg">
+                    <img  class="full-image" ng-src = "{{user.picture}}">
                 </div>
                 <div class="item tabs tabs-secondary tabs-icon-left">
                     <a class="tab-item stable-bg assertive">

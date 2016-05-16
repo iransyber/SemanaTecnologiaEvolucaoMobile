@@ -3,7 +3,7 @@
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout, $http) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout, $http ) {
     // Form data for the login modal
     $scope.loginData = {};
     $scope.isExpanded = false;
@@ -32,12 +32,12 @@ angular.module('starter.controllers', [])
     $scope.mostraMenu = function() {
       var  menuTopo =  document.getElementById('menuTopo');
       menuTopo.style.display = "block";
-    }
+    };
 
     $scope.escondeMenu = function() {
       var  menuTopo =  document.getElementById('menuTopo');
       menuTopo.style.display = "none";
-    }
+    };
 
     $scope.noHeader = function() {
         var content = document.getElementsByTagName('ion-content');
@@ -91,10 +91,10 @@ angular.module('starter.controllers', [])
 
     $scope.hideMenuTopo = function () {
       $scope.escondeMenu();
-    }
+    };
     $scope.showMenuTopo = function () {
       $scope.mostraMenu();
-    }
+    };
 
     $scope.clearFabs = function() {
         var fabs = document.getElementsByClassName('button-fab');
@@ -135,7 +135,7 @@ angular.module('starter.controllers', [])
      Descricao: "",
      DataApresentacao: "",
      Ativo:false
-  }
+  };
   $scope.trabalhos = [];
   $scope.infotrabalho = {
      contador: 0,
@@ -144,10 +144,10 @@ angular.module('starter.controllers', [])
      Descricao: "",
      DataApresentacao: "",
      Ativo: false
-  }
+  };
 
   //ISRAEL ESTA E UMA ROTA FICTICIA MAS E DESTA FORMA QUE SE UTILIZA
-  var rotabase = "http://localhost:8080/"
+  var rotabase = "http://localhost:8080/";
   $scope.listarTrabalhos = function() {
      $http({
          url: rotabase + 'Api/trabalhos/Listar',
@@ -166,7 +166,7 @@ angular.module('starter.controllers', [])
          });
          return $scope.trabalhos;
      });
-  }
+  };
 
   $scope.visualizar = function(codigo) {
      $http({
@@ -250,7 +250,7 @@ angular.module('starter.controllers', [])
          Descricao: "",
          DataApresentacao: "",
          Ativo:false
-     }
+     };
      $scope.trabalhos = [];
      $scope.infotrabalho = {
          contador: 0,
@@ -259,10 +259,10 @@ angular.module('starter.controllers', [])
          Descricao: "",
          DataApresentacao: "",
          Ativo: false
-     }
+     };
 	
      //ISRAEL ESTA VARIAVEL FICA O INICIO DO HTTP
-     var rotabase = "http://localhost:3366/"
+     var rotabase = "http://localhost:3366/";
 
      $scope.listarTrabalhos = function() {
          $http({
@@ -282,7 +282,7 @@ angular.module('starter.controllers', [])
              });
              return $scope.trabalhos;
          });
-     }
+     };
 
      $scope.visualizar = function(codigo) {
          $http({
@@ -351,7 +351,7 @@ angular.module('starter.controllers', [])
      Descricao: "",
      DataApresentacao: "",
      Ativo:false
- }
+ };
  $scope.trabalhos = [];
  $scope.infotrabalho = {
      contador: 0,
@@ -360,7 +360,7 @@ angular.module('starter.controllers', [])
      Descricao: "",
      DataApresentacao: "",
      Ativo: false
- }
+ };
 
  $scope.listarTrabalhos = function() {
      $http({
@@ -380,7 +380,7 @@ angular.module('starter.controllers', [])
          });
          return $scope.trabalhos;
      });
- }
+ };
 
  $scope.visualizar = function(codigo) {
      $http({
@@ -401,7 +401,25 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('GalleryCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
+.controller('GalleryCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Camera) {
+
+        $scope.takePicture = function (options) {
+
+            var options = {
+                quality : 75,
+                targetWidth: 200,
+                targetHeight: 200,
+                sourceType: 1
+            };
+
+            Camera.getPicture(options).then(function(imageData) {
+                $scope.picture = imageData;
+            }, function(err) {
+                console.log(err);
+            });
+
+        };
+
     $scope.hideMenuTopo();
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
