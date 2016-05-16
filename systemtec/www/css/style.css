@@ -133,3 +133,7 @@ p {
   color:#3B5998;
   text-align: center;
 }
+
+.input-modal {
+  border-top:1px solid gray;
+}
